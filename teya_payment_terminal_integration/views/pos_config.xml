@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Same as v18: no Teya fields on the POS dashboard kanban. -->
+    <delete model="ir.ui.view" search="[('name', '=', 'pos.config.kanban.inherit.teya')]"/>
+</odoo>
