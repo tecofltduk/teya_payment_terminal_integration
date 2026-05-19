@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_teya_verify_wizard,access_teya_verify_wizard,model_teya_verify_wizard,base.group_user,1,1,1,1
-access_teya_store,access_teya_store,model_teya_store,base.group_user,1,1,1,1
-access_teya_terminal_device,access_teya_terminal_device,model_teya_terminal_device,base.group_user,1,1,1,1
