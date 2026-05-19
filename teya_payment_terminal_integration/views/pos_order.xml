@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_pos_teya_integration_pos_order" model="ir.ui.view">
+        <field name="name">pos.order.form.view.teya.tntegration</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='extra']/group" position="inside">
+                <group name="nf_teya" string="Teya">
+                    <field name="teya_gateway_payment_id" readonly="1"/>
+                    <field name="teya_transaction_id" readonly="1"/>
+                    <field name="teya_response" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
