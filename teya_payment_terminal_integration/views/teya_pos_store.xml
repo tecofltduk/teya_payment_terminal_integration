@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="nf_view_teya_store_tree" model="ir.ui.view">
+        <field name="name">teya.store.tree</field>
+        <field name="model">teya.store</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="teya_store_id"/>
+                <field name="city"/>
+                <field name="country_id"/>
+                <field name="zipcode"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="nf_view_teya_store_form" model="ir.ui.view">
+        <field name="name">teya.store.form</field>
+        <field name="model">teya.store</field>
+        <field name="arch" type="xml">
+            <form string="Teya Stores" edit="0">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="teya_store_id"/>
+                        <field name="street_1"/>
+                        <field name="street_2"/>
+                        <field name="city"/>
+                        <field name="zipcode"/>
+                        <field name="country_id"/>
+                        <field name="paymen_method_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="nf_action_teya_store" model="ir.actions.act_window">
+        <field name="name">Teya Stores</field>
+        <field name="res_model">teya.store</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="main_teya_menu"
+        name="Teya"
+        parent="point_of_sale.menu_point_config_product"
+        groups="point_of_sale.group_pos_manager"/>
+
+    <menuitem
+        id="menu_teya_stores"
+        name="Stores"
+        parent="main_teya_menu"
+        sequence="1"
+        action="nf_action_teya_store"
+        groups="point_of_sale.group_pos_manager"/>
+</odoo>

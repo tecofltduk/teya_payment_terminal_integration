@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="teya_payment_terminal_integration.PaymentScreenPaymentLines"
+       t-inherit="point_of_sale.PaymentScreenPaymentLines"
+       t-inherit-mode="extension">
+        <xpath expr="//t[@t-elif=&quot;line.payment_status == 'waitingCard'&quot;]" position="replace">
+            <t t-elif="line.payment_status == 'waitingCard'">
+                <div class="electronic_status">
+                    <t t-if="line.payment_method_id.use_payment_terminal === 'teya'">
+                        Waiting for Teya terminal
+                    </t>
+                    <t t-else="">
+                        Waiting for card
+                    </t>
+                </div>
+                <div t-if="line.payment_method_id.use_payment_terminal === 'teya'">
+                    <i class="fa fa-circle-o-notch fa-spin" role="img" />
+                </div>
+                <div t-else="">
+                    <div class="button send_force_done" title="Force Done" t-on-click="() => this.props.sendForceDone(line)">
+                        Force done
+                    </div>
+                    <div class="button send_payment_cancel" title="Cancel Payment Request" t-on-click="() => this.props.sendPaymentCancel(line)">
+                        Cancel
+                    </div>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//t[@t-elif=&quot;line.payment_status == 'force_done'&quot;]" position="attributes">
+            <attribute name="t-elif">line.payment_status == 'force_done' and line.payment_method_id.use_payment_terminal !== 'teya'</attribute>
+        </xpath>
+    </t>
+
+</templates>
